@@ -11,15 +11,15 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                bat 'docker build -t my-cicd-app .'
+                bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" build -t my-cicd-app .'
             }
         }
         stage('Run Container') {
             steps {
                 echo 'Running container...'
-                bat 'docker stop my-cicd-app-container || exit 0'
-                bat 'docker rm my-cicd-app-container || exit 0'
-                bat 'docker run -d -p 3000:3000 --name my-cicd-app-container my-cicd-app'
+                bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" stop my-cicd-app-container || exit 0'
+                bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" rm my-cicd-app-container || exit 0'
+                bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" run -d -p 3000:3000 --name my-cicd-app-container my-cicd-app'
             }
         }
     }
